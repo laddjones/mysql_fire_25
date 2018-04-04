@@ -20,8 +20,6 @@ insert into Property values (00003,'Georgia Tech Orchard',0.5,FALSE,TRUE,'Spring
 insert into Property values (00004,'Woodstock Community Garden',5,FALSE,TRUE,'1804 Bouldercrest Road','Woodstock',30188,'GARDEN','gardenowner','admin1');
 insert into Property values (00005,'Kenari Company Farm',3,TRUE,TRUE,'100 Hightower Road','Roswell',30076,'FARM','farmowner','ceo',null);
 
-insert into FarmItem values ();
-
 insert into FarmItem values ('Apple',TRUE,'FRUIT');
 insert into FarmItem values ('Banana',TRUE,'FRUIT');
 insert into FarmItem values ('Orange',TRUE,'FRUIT');
