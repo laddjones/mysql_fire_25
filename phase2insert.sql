@@ -20,6 +20,19 @@ insert into Property values (00003,'Georgia Tech Orchard',0.5,FALSE,TRUE,'Spring
 insert into Property values (00004,'Woodstock Community Garden',5,FALSE,TRUE,'1804 Bouldercrest Road','Woodstock',30188,'GARDEN','gardenowner','admin1');
 insert into Property values (00005,'Kenari Company Farm',3,TRUE,TRUE,'100 Hightower Road','Roswell',30076,'FARM','farmowner','ceo',null);
 
+insert into Visit values ('billybob',00000,'11/12/2018 12:00:01 AM',5);
+insert into Visit values ('billybob',00003,'10/23/2017 04:21:49 PM',3);
+insert into Visit values ('billybob',00002,'10/24/2017 07:31:12 AM',1);
+insert into Visit values ('greenguy',00002,'1/23/2018 05:12:34 PM',4);
+insert into Visit values ('iloveflowers',00000,'2/14/2018 12:21:12 PM',5);
+insert into Visit values ('greenguy',00000,'3/3/2018 11:12:10 AM',2);
+insert into Visit values ('greenguy',00005,'1/2/2018 07:21:10 PM',2);
+insert into Visit values ('riyoy1996',00005,'10/28/2017 10:11:13 PM',4);
+insert into Visit values ('kellis',00005,'10/27/2017 09:40:11 AM',2);
+insert into Visit values ('ashton',00002,'10/27/2017 04:31:30 AM',5);
+insert into Visit values ('adinozzo',00003,'10/10/2017 12:00:00 AM',1);
+
+
 insert into FarmItem values ('Apple',TRUE,'FRUIT');
 insert into FarmItem values ('Banana',TRUE,'FRUIT');
 insert into FarmItem values ('Orange',TRUE,'FRUIT');
@@ -54,7 +67,27 @@ insert into FarmItem values ('Tomato',FALSE,'FRUIT');
 insert into FarmItem values ('Goat',TRUE,'ANIMAL');
 
 
-
+insert into Has values(00000,'Broccoli');
+insert into Has values(00001,'Corn');
+insert into Has values(00002,'Rose');
+insert into Has values(00003,'Apple');
+insert into Has values(00004,'Carrot');
+insert into Has values(00005,'Chicken');
+insert into Has values(00001,'Pig');
+insert into Has values(00005,'Corn');
+insert into Has values(00003,'Peanut');
+insert into Has values(00002,'Peas');
+insert into Has values(00002,'Peruvian Lily');
+insert into Has values(00000,'Corn');
+insert into Has values(00001,'Cow');
+insert into Has values(00001,'Chicken');
+insert into Has values(00000,'Onion');
+insert into Has values(00000,'Daisy');
+insert into Has values(00003,'Peach');
+insert into Has values(00005,'Orange');
+insert into Has values(00005,'Cashew');
+insert into Has values(00005,'Cow');
+insert into Has values(00005,'Sunflower');
 
 
 
