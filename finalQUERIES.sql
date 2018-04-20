@@ -5,7 +5,72 @@
 -- -----------------
 
 -- Julie -----------
+###confirmed properties
+SELECT Property.Name, Property.Street, Property.City, Property.Zip, Property.Size, Property.PropertyType,
+Property.IsPublic, Property.IsCommercial, Property.ID, Property.ApprovedBy, avg(rating)
+from Property join Visit
+where Property.ApprovedBy <> "Null" and Property.ID=Visit.PropertyID
+group by propertyid;
 
+select * from Property where Name = '+Name+' or Street = '+street+' or City= "City" or Zip = '+zip+'
+or size = '+size+' or PropertyType= '+PropertyType+' or IsPublic='+IsPublic+' or IsCommercial='+IsCommercial+'
+or ID='+ID+' or Owner='+Owner+';
+
+####unconfirmed properties
+SELECT Property.Name, Property.Street, Property.City, Property.Zip, Property.Size, Property.PropertyType,
+Property.IsPublic, Property.IsCommercial, Property.ID, Property.ApprovedBy
+from Property join Visit
+where Property.ApprovedBy = "Null" and Property.ID=Visit.PropertyID;
+
+select * from Property where Name = '+Name+' or Street = '+street+' or City= "City" or Zip = '+zip+'
+or size = '+size+' or PropertyType= '+PropertyType+' or IsPublic='+IsPublic+' or IsCommercial='+IsCommercial+'
+or ID='+ID+' or Owner='+Owner+';
+
+###Owner Manage Property
+#select all attributes shown on screen
+SELECT Property.Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, Has.ItemName
+from Property join Has join FarmItem
+where Property.ID = Has.PropertyID and Has.ItemName =FarmItem.Name and FarmItem.Type <> 'Animal';
+
+#edit the attributes shown on screen
+#UPDATE Property SET (Name,Street, City, Zip, Size,IsPublic,IsCommercial) 
+
+#add a new crop 
+select FarmItem.Name from FarmItem where FarmItem.IsApproved= True and FarmItem.Type <> 'Animal';
+insert into Has(PropertyID,ItemName) values (%,%) where ('+PropertyID+'= PropertyID) and ('+ItemName+'=FarmItem.Name);
+
+#request a new crop
+Insert into FarmItem(Name, IsApproved, Type) values ('coconut', 0, 'null');
+
+###Property Details
+SELECT Property.Name, Property.Owner, User.Email, Property.Street, Property.City, Property.Zip, Property.Size,
+Property.PropertyType, Property.IsPublic, Property.IsCommercial, Property.ID
+from Property join User
+where Property.owner = User.username and '+username+'= Property.username;
+
+#avg rating and visits
+SELECT count(*), avg(rating) from Visit 
+where '+PropertyID+'= PropertyID
+group by PropertyID;
+
+#crops
+Select Has.ItemName from Has join FarmItem where FarmItem.Name=Has.ItemName and IsApproved=True and FarmItem.Name <> 
+'Animal' and '+propertyid+'= PropertyID; 
+
+#animal
+Select Has.ItemName from Has join FarmItem where FarmItem.Name=Has.ItemName and IsApproved=True and FarmItem.Name = 
+'Animal' and '+propertyid+'= PropertyID; 
+
+
+
+
+
+
+#delete crops 
+Delete Has.ItemName from Has where Has.ItemName= '+ItemName+';
+
+#delete property 
+Delete PropertyID from Property where PropertyID = '+PropertyID+';
 
 
 -- -----------------
