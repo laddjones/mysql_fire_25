@@ -99,6 +99,16 @@ WHERE property.ID=visit.propertyID AND IsPublic=TRUE
 GROUP BY propertyID
 order by Property.Size;
 
+-- #sort by Average rating
+SELECT * from (SELECT name,street,city,zip,size,propertytype,isPublic,isCommercial,ID, count(username) as Visits,avg(rating) as Average_Rating FROM Property join visit
+WHERE property.ID=visit.propertyID AND IsPublic=TRUE
+GROUP BY propertyID) AS Table1 where Table1.Average_Rating>2 and Table1.Average_Rating<4;
+
+-- #search by Number of Visits
+SELECT * from (SELECT name,street,city,zip,size,propertytype,isPublic,isCommercial,ID, count(username) as Visits,avg(rating) as Average_Rating FROM Property join visit
+WHERE property.ID=visit.propertyID AND IsPublic=TRUE
+GROUP BY propertyID) AS Table1 where Table1.Visits>1 and Table1.Visits<6;
+
 -- #search by
 SELECT name,street,city,zip,size,propertytype,isPublic,isCommercial,ID, count(username),avg(rating) FROM Property join visit
 WHERE property.ID=visit.propertyID AND IsPublic=TRUE AND Property.Name = 'Georgia Tech Garden'
