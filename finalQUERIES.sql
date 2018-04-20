@@ -12,8 +12,9 @@ from Property join Visit
 where Property.ApprovedBy <> "Null" and Property.ID=Visit.PropertyID
 group by propertyid;
 
-select * from Property where ('+Searchby+' = '+Option+');
-
+select * from Property where Name = '+Name+' or Street = '+street+' or City= "City" or Zip = '+zip+'
+or size = '+size+' or PropertyType= '+PropertyType+' or IsPublic='+IsPublic+' or IsCommercial='+IsCommercial+'
+or ID='+ID+' or Owner='+Owner+';
 
 ####unconfirmed properties
 SELECT Property.Name, Property.Street, Property.City, Property.Zip, Property.Size, Property.PropertyType,
@@ -135,7 +136,8 @@ group by Visit.Username;
 --shows the table on the screen
 select * from ManageVisitors;
 --for the search by
-select * from ManageVisitors where Username = '+Username+' or email = '+email+';
+select * from ManageVisitors where Username = '+Username+';
+select * from ManageVisitors where email = '+email+';
 --delete a visitor visit log
 delete from Visit where Username = '+Username+';
 --delete a vistor
