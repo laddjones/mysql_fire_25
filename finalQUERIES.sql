@@ -168,7 +168,52 @@ delete from Visit where Username = '+Username+' and PropertyID = '+ID+';
 -- -----------------
 
 -- Armando ---------
-  
+-- MANAGE OWNERS
+-- #create view for Owner
+create view Owner
+as select User.Username, User.Email, count(Property.Name) as Number_of_Properties
+from User join property on User.Username = Property.Owner
+where UserType = 'OWNER'
+group by User.username;
+select * from Owner;
+#delete owner
+delete from Owner where Username = '+username+';
 
+-- #search by
+select * from Owner where Username = '+username+';
+select * from Owner where Email = '+email+';
+select * from Owner where Number_of_Properties = '+Number_of_Properties+';
+
+-- APPROVE CROPS
+-- # Create view Pending_Animals_Crops
+create view Pending_Animals_Crops
+as select Name,Type from FarmItem where IsApproved = 0;
+
+-- #approve selection
+update Pending_Animals_Crops set IsApproved = 1 where Name = '+Name+';
+
+-- #delete selection
+delete from Pending_Animals_Crops where Name = '+Name+';
+ 
+ -- VIEW YOUR VISIT HISTORY
+
+select Property.Name, Visit.VisitDate, avg(Visit.Rating) from Property join Visit on Property.ID = Visit.PropertyID where Visit.Username = '+username+' group by Property.ID;
+
+-- SEARCH OTHER PROPERTIES
+-- #view other properties not including their own properties
+create view OtherProperties
+as select *
+from Property as P join Visit as V on P.ID = V.PropertyID
+where P.ApprovedBy is not null and owner != '+username+';
+
+-- #view certain attributes from this task screen that doesn't include owner's
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating)
+from OtherProperties
+group by ID;
+-- #sort by
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating) from OtherProperties group by ID order by Size;
+
+-- #search by
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating) from OtherProperties where Name = 'Georgia Tech Garden';
 
 -- -----------------
