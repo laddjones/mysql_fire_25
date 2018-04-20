@@ -19,6 +19,8 @@ SELECT email,password FROM user WHERE email="+email+" AND password="+password+";
 INSERT INTO user(email, username, password, usertype ) values(%, %, %, “OWNER”);
 INSERT INTO property(id, name, street, city, zip, size, propertytype, owner, ispublic, iscommercial)
 select max(id)+1,%, %, %, %, %, %, % , %, % from property;
+select name from farmitem where IsApproved=True and type = "Animal";
+select name from farmitem where IsApproved=True and type <> "Animal";
 INSERT INTO has(propertyID,itemname) values(%,%);
 
 --View Public Properties
