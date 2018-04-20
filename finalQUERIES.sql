@@ -52,12 +52,12 @@ and Type <> 'Animal';
 select Name from FarmItem
 where IsApproved = True and Type = 'Animal';
 --adding the animal to the property
-insert into Has (PropertyID, ItemName) values (%s,%s);
+insert into Has (PropertyID, ItemName) values (%,%);
 --approved crops in drop down
 select Name from FarmItem
 where IsApproved = True and Type <> 'Animal';
 --adds the crop
-insert into Has (PropertyID, ItemName) values (%s,%s);
+insert into Has (PropertyID, ItemName) values (%,%);
 --deletes item it has
 delete from Has where PropertyID = '+ID+' and ItemName = '+ItemName+';
 --deletes the property
@@ -95,7 +95,7 @@ select FarmItem.Name from Has, FarmItem
 where PropertyID = '+ID+' and FarmItem.Name = Has.ItemName and IsApproved = True
 and Type = 'Animal';
 --to log a visit
-insert into Visit (Username, PropertyID, VisitDate, Rating) values (%s,%s,%s,%s);
+insert into Visit (Username, PropertyID, VisitDate, Rating) values (%,%,%,%);
 --unlogging a visit
 delete from Visit where Username = '+Username+' and PropertyID = '+ID+';
 
