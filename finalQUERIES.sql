@@ -1,5 +1,34 @@
 -- Ladds -----------
+#register visitor
+INSERT INTO user (Username, Email, Password, UserType)
+				VALUES("laddjones1", "laddjonesiv@gmaill.com", "laddsPASS", "VISITOR");
 
+
+
+#search owner property
+SELECT name, street, city, zip, size, PropertyType, isPublic, isCommercial, id, ApprovedBy, COUNT(*), AVG(rating)
+FROM property JOIN visit ON  visit.propertyID = property.id 
+WHERE name = "Georgia Tech Garden";
+	
+    
+    
+#admin can insert and delete immideately (without getting approved)
+INSERT INTO farmItem (Name, IsApproved, Type)
+				VALUES("newAnimal/CropName", 1, "FRUIT");
+                
+DELETE FROM farmItem 
+				WHERE Name = "Apple";
+                
+SELECT * #could be name, isapproved, type
+				FROM farmitem
+                WHERE name = "Almond"; #could be name, isapproved, type
+
+
+
+#everything goes into the property table (just insert a flag value)
+INSERT INTO property  (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
+				VALUES(123, "name_laddJones", 15.9, 1, 1, "street_198431 stereet",
+								"city_atalnba", 2983, "FARM", "adinozzo", "admin2"); #owner and approvedBy must be legit already instanciated people
 
 
 -- -----------------
