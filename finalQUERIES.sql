@@ -84,7 +84,7 @@ Insert into FarmItem(Name, IsApproved, Type) values (%, %, %);
 
 
 #delete crops 
-Delete from Has where itemname="+cropname+";
+Delete from Has where itemname="+cropname+" and propertyid="+id+";
 
 #delete property 
 Delete from property where id="+id+";
