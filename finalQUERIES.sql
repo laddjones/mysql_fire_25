@@ -10,11 +10,17 @@ SELECT name, street, city, zip, size, PropertyType, isPublic, isCommercial, id, 
 FROM property JOIN visit ON  visit.propertyID = property.id 
 WHERE property.owner = '+OWNER+'
 GROUP BY visit.PropertyID;
+
 #general search by
+SELECT name, street, city, zip, size, PropertyType, isPublic, isCommercial, id, ApprovedBy, COUNT(username) as Visits, AVG(rating) as Avg_Rating
+FROM property JOIN visit ON  visit.propertyID = property.id 
+WHERE property.owner = '+OWNER+' AND 'attribute' = '+chosenattribute+'
+GROUP BY visit.PropertyID;
 	
     
     
-#admin can insert and delete immideately (without getting approved)
+#Manage crops - admin can insert and delete immediately (without getting approved)
+select name, type from FarmItem where IsApproved = True;
 INSERT INTO farmItem (Name, IsApproved, Type)
 				VALUES("newAnimal/CropName", 1, "FRUIT");
                 
@@ -27,11 +33,11 @@ SELECT * #could be name, isapproved, type
 
 
 
-#everything goes into the property table (just insert a flag value)
+#Create Property - everything goes into the property table (just insert a flag value)
 INSERT INTO property  (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
 				VALUES(123, "name_laddJones", 15.9, 1, 1, "street_198431 stereet",
 								"city_atalnba", 2983, "FARM", "adinozzo", "admin2"); #owner and approvedBy must be legit already instanciated people
-
+insert into Has (propertyID, ItemName) values (id, thing);
 
 -- -----------------
 
