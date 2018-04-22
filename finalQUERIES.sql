@@ -271,13 +271,13 @@ from Property as P join Visit as V on P.ID = V.PropertyID
 where P.ApprovedBy is not null and owner != '+username+';
 
 -- #view certain attributes from this task screen that doesn't include owner's
-select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating)
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID) as NumVisits, avg(Rating)
 from OtherProperties
 group by ID;
 -- #sort by
-select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating) from OtherProperties group by ID order by Size;
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID) as NumVisits, avg(Rating) from OtherProperties group by ID order by Size;
 
 -- #search by
-select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID), avg(Rating) from OtherProperties where Name = 'Georgia Tech Garden';
+select Name, Street, City, Zip, Size, PropertyType, IsPublic, IsCommercial, ID, count(ID) as NumVisits , avg(Rating) from OtherProperties where Name = 'Georgia Tech Garden';
 
 -- -----------------
