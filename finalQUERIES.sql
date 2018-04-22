@@ -6,9 +6,11 @@ INSERT INTO user (Username, Email, Password, UserType)
 
 
 #search owner property
-SELECT name, street, city, zip, size, PropertyType, isPublic, isCommercial, id, ApprovedBy, COUNT(*), AVG(rating)
+SELECT name, street, city, zip, size, PropertyType, isPublic, isCommercial, id, ApprovedBy, COUNT(username) as Visits, AVG(rating) as Avg_Rating
 FROM property JOIN visit ON  visit.propertyID = property.id 
-WHERE name = "Georgia Tech Garden";
+WHERE property.owner = '+OWNER+'
+GROUP BY visit.PropertyID;
+#general search by
 	
     
     
