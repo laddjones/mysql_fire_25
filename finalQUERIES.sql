@@ -44,22 +44,28 @@ insert into Has (propertyID, ItemName) values (id, thing);
 -- Julie -----------
 -- Julie -----------
 ###confirmed properties
+create view CProperty as
 SELECT Property.Name, Property.Street, Property.City, Property.Zip, Property.Size, Property.PropertyType,
 Property.IsPublic, Property.IsCommercial, Property.ID, Property.ApprovedBy, avg(rating)
 from Property join Visit
 where Property.ApprovedBy <> "Null" and Property.ID=Visit.PropertyID
 group by propertyid;
 
-select * from Property where ('+Searchby+' = '+Option+');
+select * from CProperty;
+
+select * from CProperty where ('+Searchby+' = '+Option+');
 
 
 ####unconfirmed properties
+create view UCProperty as
 SELECT Property.Name, Property.Street, Property.City, Property.Zip, Property.Size, Property.PropertyType,
 Property.IsPublic, Property.IsCommercial, Property.ID, Property.owner
 from Property
 where (Property.ApprovedBy is NULL);
 
-select * from Property where ('+Searchby+' = '+Option+');
+select * from UCProperty;
+
+select * from UCProperty where ('+Searchby+' = '+Option+');
 
 ###Owner Manage Property
 #select all attributes shown on screen
