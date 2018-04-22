@@ -34,9 +34,8 @@ SELECT * #could be name, isapproved, type
 
 
 #Create Property - everything goes into the property table (just insert a flag value)
-INSERT INTO property  (ID, Name, Size, IsCommercial, IsPublic, Street, City, Zip, PropertyType, Owner, ApprovedBy)
-				VALUES(123, "name_laddJones", 15.9, 1, 1, "street_198431 stereet",
-								"city_atalnba", 2983, "FARM", "adinozzo", "admin2"); #owner and approvedBy must be legit already instanciated people
+INSERT INTO property(id, name, street, city, zip, size, propertytype, owner, ispublic, iscommercial)
+select max(id)+1,%, %, %, %, %, %, % , %, % from property; #owner and approvedBy must be legit already instanciated people
 insert into Has (propertyID, ItemName) values (id, thing);
 
 -- -----------------
