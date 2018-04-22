@@ -19,7 +19,7 @@ GROUP BY visit.PropertyID;
 	
     
     
-#Manage crops - admin can insert and delete immediately (without getting approved)
+#Manage crops -- admin can insert and delete immediately (without getting approved)
 select name, type from FarmItem where IsApproved = True;
 INSERT INTO farmItem (Name, IsApproved, Type)
 				VALUES("newAnimal/CropName", 1, "FRUIT");
@@ -96,8 +96,8 @@ from Property join User
 where Property.owner = User.username and '+username+'= Property.owner;
 
 #avg rating and visits
-SELECT count(*), avg(rating) from Visit 
-where '+PropertyID+'= PropertyID
+SELECT count(*) as Visits, avg(rating) as Avg_Rating from Visit 
+where PropertyID = '+PropertyID+'
 group by PropertyID;
 
 #crops
